@@ -5,6 +5,7 @@ import "./formComponent.css";
 import $ from "jquery";
 import MessageBox from "../messageBox/messageBoxComponent";
 import Checkbox from "../checkBox/checkboxComponent";
+import JoinCommunity from "../../pages/joinCommunityComponent";
 
 class Form extends Component {
   constructor(props) {
@@ -26,7 +27,8 @@ class Form extends Component {
       // local variables
       current_question: 1,
       percentage: 0,
-      submit: false,
+      show_submit: false,
+      submitted: false,
       submit_status: "SUBMIT",
       message_type: "none",
       message_desc: "",
@@ -181,7 +183,7 @@ class Form extends Component {
       }
       case 11:
         next_question_no = 11;
-        this.setState({ submit: true });
+        this.setState({ show_submit: true });
         break;
     }
     this.setState({
@@ -272,6 +274,7 @@ class Form extends Component {
         message_type: "success",
         message_desc: "Successfully Submitted",
         submit_status: "SUBMIT",
+        submitted: true,
       });
     } else {
       this.setState({
@@ -300,23 +303,31 @@ class Form extends Component {
             desc={this.state.message_desc}
           />
         </div>
-        <form id="bowe_form" onSubmit={this.onSubmit}>
+        <form
+          id="bowe_form"
+          onSubmit={this.onSubmit}
+          className={
+            "bowe_form" +
+            (this.state.submitted === false ? " show_div" : " hide_div")
+          }
+        >
           <div
             className={
               "form-input" +
-              (this.state.current_question === 1
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 1 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 1
+                Question 1/11
               </label>
               <h3 className="question-text" id="question">
                 What is your Name?
               </h3>
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer">
               <input
                 className="input-text"
@@ -357,19 +368,20 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 2
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 2 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 2
+                Question 2/11
               </label>
               <h3 className="question-text" id="question">
                 What is your email address?
               </h3>
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer">
               <input
                 className="input-text"
@@ -410,19 +422,20 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 3
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 3 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 3
+                Question 3/11
               </label>
               <h3 className="question-text" id="question">
                 What is your Whatsapp Number?
               </h3>
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer">
               <input
                 className="input-text"
@@ -464,20 +477,21 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 4
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 4 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 4
+                Question 4/11
               </label>
               <h3 className="question-text" id="question">
                 Which of the following options best describe your current year
                 of academics?
               </h3>
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer">
               <div className="input-radio-box">
                 <label
@@ -575,20 +589,21 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 5
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 5 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 5
+                Question 5/11
               </label>
               <h3 className="question-text" id="question">
                 What can you tell us about yourself? hobbies, passion anything
                 else you want to share.
               </h3>
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer">
               <input
                 className="input-text"
@@ -630,14 +645,12 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 6
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 6 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 6
+                Question 6/11
               </label>
               <h3 className="question-text" id="question">
                 Do you ever focus on your overall development? If yes, which
@@ -645,6 +658,9 @@ class Form extends Component {
                 your college academics?
               </h3>
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer">
               <input
                 className="input-text"
@@ -685,20 +701,21 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 7
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 7 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 7
+                Question 7/11
               </label>
               <h3 className="question-text" id="question">
                 What all the things you feel are missing in your college?
               </h3>
               {this.state.things}
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer">
               <div className="input-checkbox">
                 <label htmlFor="no_alumni_network">
@@ -796,20 +813,21 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 8
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 8 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 8
+                Question 8/11
               </label>
               <h3 className="question-text" id="question">
                 Do you wish to attend weekly session on what your seniors have
                 to say about their placement preparation experience?
               </h3>
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer yes_no">
               <div className="input_yes_no_box">
                 <label
@@ -894,20 +912,21 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 9
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 9 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 9
+                Question 9/11
               </label>
               <h3 className="question-text" id="question">
                 Would you like to connect with industry experts one on
                 one?(E.g., SDE, Product Managers, HRs of well-known companies)
               </h3>
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer yes_no">
               <div className="input_yes_no_box">
                 <label
@@ -994,20 +1013,21 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 10
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 10 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 10
+                Question 10/11
               </label>
               <h3 className="question-text" id="question">
                 Are you willing to pay for industry expert which includes (15
                 min video call, weekly blog post,1000 words chat with them)
               </h3>
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer yes_no">
               <div className="input_yes_no_box">
                 <label
@@ -1094,20 +1114,21 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 11
-                ? " show_question"
-                : " hide_question")
+              (this.state.current_question === 11 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 11
+                Question 11/11
               </label>
               <h3 className="question-text" id="question">
                 Do you want to be in a like-minded community-based learning
                 Environment?
               </h3>
             </div>
+
+            <div className="question-2"></div>
+            <div className="question-3"></div>
             <div className="answer yes_no">
               <div className="input_yes_no_box">
                 <label
@@ -1190,7 +1211,7 @@ class Form extends Component {
             </div>
             <div
               className={
-                this.state.submit === true ? " show_question" : " hide_question"
+                this.state.show_submit === true ? " show_div" : " hide_div"
               }
             >
               <button type="submit" className="submit">
@@ -1199,7 +1220,12 @@ class Form extends Component {
             </div>
           </div>
         </form>
-        <div className="footer">
+        <div
+          className={
+            "footer" +
+            (this.state.submitted === false ? " show_div" : " hide_div")
+          }
+        >
           <div className="footer-left">
             <div className="percentage">
               <CircularProgressBar
@@ -1243,6 +1269,14 @@ class Form extends Component {
               </svg>
             </div>
           </div>
+        </div>
+        <div
+          className={
+            "joinCommunitydiv" +
+            (this.state.submitted === true ? " show_div" : " hide_div")
+          }
+        >
+          <JoinCommunity></JoinCommunity>
         </div>
       </div>
     );

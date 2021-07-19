@@ -1,0 +1,47 @@
+.joinCommunity {
+  height: 100vh;
+  width: 100%;
+  padding: 20vh 5vw;
+  display: flex;
+  flex-flow: column;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.joinCommunity > h1 {
+  font-weight: bold;
+  color: white;
+  margin: 25px 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.joinCommunity > h3 {
+  width: 100%;
+  text-align: center;
+  margin: 10px 15px 20px 15px;
+}
+
+.joinCommunity > a {
+  width: 80px;
+  height: 80px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.joinCommunity > a > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25%;
+  box-shadow: 2px 2px 2px gray;
+}
+
+a.discord-link {
+  text-align: center;
+  font-size: 18px;
+  text-decoration: underline;
+  width: 100%;
+  color: white;
+}
