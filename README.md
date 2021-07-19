@@ -1,6 +1,6 @@
 # BOWE Survey
 
-Live Website at: [*forms.bowe.co.in*](https://forms.bowe.co.in).
+Live Website at: [*forms.bowe.co.in*](http://forms.bowe.co.in).
 
 This project was done by *pavankumarvm*. You can check latest code on Github Repository [bowe_survey](https://github.com/pavankumarvm/bowe_survey).
 

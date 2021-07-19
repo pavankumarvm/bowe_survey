@@ -1,6 +1,6 @@
 {
   "name": "bowe_survey",
-  "homepage": "https://forms.bowe.co.in",
+  "homepage": "http://forms.bowe.co.in",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -40,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
