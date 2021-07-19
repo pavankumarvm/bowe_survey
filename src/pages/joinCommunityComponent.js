@@ -12,12 +12,12 @@ const JoinCommunity = () => {
       <br />
       <br />
       <h3>Click on the link to join👇🏻</h3>
-      <a href="https://discord.gg/XpHhT6yxcV">
+      <a href="https://discord.gg/NHzkNFuGCs">
         <img src={discord} alt="discord-bowe" />
       </a>
       <h3>OR</h3>
-      <a className="discord-link" href="https://discord.gg/XpHhT6yxcV">
-        https://discord.gg/XpHhT6yxcV
+      <a className="discord-link" href="https://discord.gg/NHzkNFuGCs">
+        https://discord.gg/NHzkNFuGCs
       </a>
     </div>
   );
