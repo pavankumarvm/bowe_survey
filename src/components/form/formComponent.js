@@ -1022,7 +1022,7 @@ class Form extends Component {
               </label>
               <h3 className="question-text" id="question">
                 Are you willing to pay for industry expert which includes (15
-                min video call, weekly blog post,1000 words chat with them)
+                min video call, weekly blog post,1000 words chat with them)?
               </h3>
             </div>
 
@@ -1238,33 +1238,37 @@ class Form extends Component {
           <div className="footer-right">
             <div className="previous" onClick={this.prevQuestion}>
               <svg
+                width="18"
+                height="18"
+                className="mirror--rtl"
+                viewBox="0 0 16 16"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="9"
-                viewBox="0 0 14 9"
               >
                 <path
-                  fill="none"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M5.66552 13.3716C5.46027 13.1869 5.44363 12.8708 5.62836 12.6655L9.82732 8L5.62836 3.33448C5.44363 3.12922 5.46027 2.81308 5.66552 2.62835C5.87078 2.44362 6.18692 2.46026 6.37165 2.66551L10.8717 7.66551C11.0428 7.85567 11.0428 8.14433 10.8717 8.33448L6.37165 13.3345C6.18692 13.5397 5.87078 13.5564 5.66552 13.3716Z"
                   stroke="#ffffff80"
-                  className="svgColor"
-                  strokeWidth="3"
-                  d="M13.333 7.667L7.037 1.37.741 7.667"
+                  strokeWidth="1"
                 ></path>
               </svg>
             </div>
             <div className="next" onClick={this.validate}>
               <svg
+                width="18"
+                height="18"
+                className="mirror--rtl"
+                viewBox="0 0 16 16"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="9"
-                viewBox="0 0 14 9"
               >
                 <path
-                  fill="none"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M5.66552 13.3716C5.46027 13.1869 5.44363 12.8708 5.62836 12.6655L9.82732 8L5.62836 3.33448C5.44363 3.12922 5.46027 2.81308 5.66552 2.62835C5.87078 2.44362 6.18692 2.46026 6.37165 2.66551L10.8717 7.66551C11.0428 7.85567 11.0428 8.14433 10.8717 8.33448L6.37165 13.3345C6.18692 13.5397 5.87078 13.5564 5.66552 13.3716Z"
                   stroke="#ffffff80"
-                  className="svgColor"
-                  strokeWidth="3"
-                  d="M.667 1.333L6.963 7.63l6.296-6.296"
+                  strokeWidth="1"
                 ></path>
               </svg>
             </div>
