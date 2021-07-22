@@ -13,8 +13,8 @@ class Form extends Component {
     this.state = {
       // data vairables
       name: "",
-      email: "",
-      whatsapp: "",
+      // email: "",
+      // whatsapp: "",
       academic_year: "",
       about_self: "",
       development: "",
@@ -79,16 +79,41 @@ class Form extends Component {
         }
         break;
       }
+      // case 2: {
+      //   let re =
+      //     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      //   if (
+      //     (this.state.email === "") |
+      //     (this.state.email === null) |
+      //     !re.test(this.state.email)
+      //   ) {
+      //     new_message_type = "warning";
+      //     new_message_desc = "Please fill valid Email address.";
+      //     next_question_no = 2;
+      //   } else {
+      //     next_question_no = 3;
+      //   }
+      //   break;
+      // }
+      // case 3: {
+      //   if (
+      //     (this.state.whatsapp === "") |
+      //     (this.state.whatsapp === null) |
+      //     (this.state.whatsapp.length !== 10)
+      //   ) {
+      //     new_message_type = "warning";
+      //     new_message_desc = "Mobile Number must be 10 digits only.";
+      //     next_question_no = 3;
+      //   } else {
+      //     next_question_no = 4;
+      //   }
+      //   break;
+      // }
       case 2: {
-        let re =
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (
-          (this.state.email === "") |
-          (this.state.email === null) |
-          !re.test(this.state.email)
+          (this.state.academic_year === "") |
+          (this.state.academic_year === null)
         ) {
-          new_message_type = "warning";
-          new_message_desc = "Please fill valid Email address.";
           next_question_no = 2;
         } else {
           next_question_no = 3;
@@ -96,13 +121,9 @@ class Form extends Component {
         break;
       }
       case 3: {
-        if (
-          (this.state.whatsapp === "") |
-          (this.state.whatsapp === null) |
-          (this.state.whatsapp.length !== 10)
-        ) {
+        if ((this.state.about_self === "") | (this.state.about_self === null)) {
           new_message_type = "warning";
-          new_message_desc = "Mobile Number must be 10 digits only.";
+          new_message_desc = "Please, let us know more about yourself.";
           next_question_no = 3;
         } else {
           next_question_no = 4;
@@ -111,9 +132,11 @@ class Form extends Component {
       }
       case 4: {
         if (
-          (this.state.academic_year === "") |
-          (this.state.academic_year === null)
+          (this.state.development === "") |
+          (this.state.development === null)
         ) {
+          new_message_type = "warning";
+          new_message_desc = "Please, let us know abut your overall skills.";
           next_question_no = 4;
         } else {
           next_question_no = 5;
@@ -121,9 +144,9 @@ class Form extends Component {
         break;
       }
       case 5: {
-        if ((this.state.about_self === "") | (this.state.about_self === null)) {
+        if (this.state.things.size == 0) {
           new_message_type = "warning";
-          new_message_desc = "Please, let us know more about yourself.";
+          new_message_desc = "Please Tick at least one options.";
           next_question_no = 5;
         } else {
           next_question_no = 6;
@@ -131,12 +154,7 @@ class Form extends Component {
         break;
       }
       case 6: {
-        if (
-          (this.state.development === "") |
-          (this.state.development === null)
-        ) {
-          new_message_type = "warning";
-          new_message_desc = "Please, let us know abut your overall skills.";
+        if (this.state.session === "") {
           next_question_no = 6;
         } else {
           next_question_no = 7;
@@ -144,9 +162,7 @@ class Form extends Component {
         break;
       }
       case 7: {
-        if (this.state.things.size == 0) {
-          new_message_type = "warning";
-          new_message_desc = "Please Tick at least one options.";
+        if (this.state.connect_experts === "") {
           next_question_no = 7;
         } else {
           next_question_no = 8;
@@ -154,35 +170,19 @@ class Form extends Component {
         break;
       }
       case 8: {
-        if (this.state.session === "") {
+        if (this.state.pay_experts === "") {
           next_question_no = 8;
         } else {
           next_question_no = 9;
         }
-        break;
+        // this.setState({
+        //   current_question: next_question_no,
+        //   percentage: 95,
+        // });
+        // return;
       }
-      case 9: {
-        if (this.state.connect_experts === "") {
-          next_question_no = 9;
-        } else {
-          next_question_no = 10;
-        }
-        break;
-      }
-      case 10: {
-        if (this.state.pay_experts === "") {
-          next_question_no = 10;
-        } else {
-          next_question_no = 11;
-        }
-        this.setState({
-          current_question: next_question_no,
-          percentage: 95,
-        });
-        return;
-      }
-      case 11:
-        next_question_no = 11;
+      case 9:
+        next_question_no = 9;
         this.setState({ show_submit: true });
         break;
     }
@@ -190,7 +190,7 @@ class Form extends Component {
       message_type: new_message_type,
       message_desc: new_message_desc,
       current_question: next_question_no,
-      percentage: (next_question_no - 1) * 10,
+      percentage: next_question_no * 10,
     });
     this.showMessage();
   };
@@ -200,7 +200,13 @@ class Form extends Component {
       [event.target.name]: event.target.value,
     });
     switch (this.state.current_question) {
-      case 4:
+      case 2:
+        this.validate();
+        break;
+      case 5:
+        this.validate();
+        break;
+      case 6:
         this.validate();
         break;
       case 7:
@@ -210,12 +216,6 @@ class Form extends Component {
         this.validate();
         break;
       case 9:
-        this.validate();
-        break;
-      case 10:
-        this.validate();
-        break;
-      case 11:
         this.validate();
         break;
     }
@@ -230,7 +230,7 @@ class Form extends Component {
 
     console.log("Submitting...");
 
-    this.setState({ submit_status: "SUBMITTING..." });
+    this.setState({ submit_status: "SUBMITTING...", percentage: 100 });
 
     event.preventDefault();
 
@@ -319,7 +319,7 @@ class Form extends Component {
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 1/11
+                Question 1/9
               </label>
               <h3 className="question-text" id="question">
                 What is your Name?
@@ -365,7 +365,7 @@ class Form extends Component {
               </svg>
             </button>
           </div>
-          <div
+          {/* <div
             className={
               "form-input" +
               (this.state.current_question === 2 ? " show_div" : " hide_div")
@@ -373,7 +373,7 @@ class Form extends Component {
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 2/11
+                Question 2/9
               </label>
               <h3 className="question-text" id="question">
                 What is your email address?
@@ -427,7 +427,7 @@ class Form extends Component {
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 3/11
+                Question 3/9
               </label>
               <h3 className="question-text" id="question">
                 What is your Whatsapp Number?
@@ -473,16 +473,16 @@ class Form extends Component {
                 ></path>
               </svg>
             </button>
-          </div>
+            </div>*/}
           <div
             className={
               "form-input" +
-              (this.state.current_question === 4 ? " show_div" : " hide_div")
+              (this.state.current_question === 2 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 4/11
+                Question 2/9
               </label>
               <h3 className="question-text" id="question">
                 Which of the following options best describe your current year
@@ -501,7 +501,7 @@ class Form extends Component {
                   }
                   htmlFor="academic_year_be"
                 >
-                  <span className="input-radio-text">B.E</span>
+                  <span className="input-radio-text">B.E(4th Year)</span>
                   <input
                     className="input-radio"
                     type="radio"
@@ -522,7 +522,7 @@ class Form extends Component {
                   }
                   htmlFor="academic_year_te"
                 >
-                  <span className="input-radio-text">T.E</span>
+                  <span className="input-radio-text">T.E(3rd Year)</span>
                   <input
                     className="input-radio"
                     type="radio"
@@ -542,7 +542,7 @@ class Form extends Component {
                   }
                   htmlFor="academic_year_se"
                 >
-                  <span className="input-radio-text">S.E</span>
+                  <span className="input-radio-text">S.E(2nd Year)</span>
                   <input
                     className="input-radio"
                     type="radio"
@@ -562,7 +562,7 @@ class Form extends Component {
                   }
                   htmlFor="academic_year_fe"
                 >
-                  <span className="input-radio-text">F.E</span>
+                  <span className="input-radio-text">F.E(1st Year)</span>
                   <input
                     className="input-radio"
                     type="radio"
@@ -589,12 +589,12 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 5 ? " show_div" : " hide_div")
+              (this.state.current_question === 3 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 5/11
+                Question 3/9
               </label>
               <h3 className="question-text" id="question">
                 What can you tell us about yourself? hobbies, passion anything
@@ -645,12 +645,12 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 6 ? " show_div" : " hide_div")
+              (this.state.current_question === 4 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 6/11
+                Question 4/9
               </label>
               <h3 className="question-text" id="question">
                 Do you ever focus on your overall development? If yes, which
@@ -701,12 +701,12 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 7 ? " show_div" : " hide_div")
+              (this.state.current_question === 5 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 7/11
+                Question 5/9
               </label>
               <h3 className="question-text" id="question">
                 What all the things you feel are missing in your college?
@@ -813,12 +813,12 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 8 ? " show_div" : " hide_div")
+              (this.state.current_question === 6 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 8/11
+                Question 6/9
               </label>
               <h3 className="question-text" id="question">
                 Do you wish to attend weekly session on what your seniors have
@@ -912,12 +912,12 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 9 ? " show_div" : " hide_div")
+              (this.state.current_question === 7 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 9/11
+                Question 7/9
               </label>
               <h3 className="question-text" id="question">
                 Would you like to connect with industry experts one on
@@ -1013,12 +1013,12 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 10 ? " show_div" : " hide_div")
+              (this.state.current_question === 8 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 10/11
+                Question 8/9
               </label>
               <h3 className="question-text" id="question">
                 Are you willing to pay for industry expert which includes (15
@@ -1114,12 +1114,12 @@ class Form extends Component {
           <div
             className={
               "form-input" +
-              (this.state.current_question === 11 ? " show_div" : " hide_div")
+              (this.state.current_question === 9 ? " show_div" : " hide_div")
             }
           >
             <div className="question">
               <label className="question-label" htmlFor="question">
-                Question 11/11
+                Question 9/9
               </label>
               <h3 className="question-text" id="question">
                 Do you want to be in a like-minded community-based learning
